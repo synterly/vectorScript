@@ -2,8 +2,6 @@ from http.server import BaseHTTPRequestHandler
 import urllib.parse
 import math
 
-employees = ["synterly", "smarticles101"]
-
 def superweapon_power(typer_str, target_str):
     chars1 = list(typer_str.lower())
     chars2 = list(target_str.lower())
@@ -18,6 +16,7 @@ def superweapon_power(typer_str, target_str):
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
+        employees = ["synterly", "smarticles101"]
         query = urllib.parse.urlparse(self.path).query
         params = urllib.parse.parse_qs(query)
         
@@ -39,4 +38,3 @@ class handler(BaseHTTPRequestHandler):
         self.send_header("Access-Control-Max-Age", "86400")
         self.end_headers()
         self.wfile.write(response.encode())
-
