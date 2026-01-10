@@ -1,11 +1,12 @@
 from http.server import BaseHTTPRequestHandler
 import urllib.parse
 import math
+import random
 
 def superweapon_power(typer_str, target_str):
     def weighted_chars(s):
         chars = list(s.lower())
-        weights = [ 1.0 - 0.5 * i/len(chars) for i in range(len(chars))]
+        weights = [ 1.0 - random.random() * i/len(chars) for i in range(len(chars))]
         return {c: sum(w for char, w in zip(chars, weights) if char == c) for c in set(chars)}
     
     freq1 = weighted_chars(typer_str)
