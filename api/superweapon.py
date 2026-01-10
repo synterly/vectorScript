@@ -16,7 +16,7 @@ def superweapon_power(typer_str, target_str):
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
-        employees = ["synterly", "smarticles101"]
+        employees = ["synterly", "smarticles101", "aubsec", "scavengeremain"]
         query = urllib.parse.urlparse(self.path).query
         params = urllib.parse.parse_qs(query)
         
