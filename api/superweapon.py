@@ -3,25 +3,28 @@ import urllib.parse
 import math
 
 def superweapon_power(typer_str, target_str):
-
+    def weighted_chars(s):
+        chars = list(typer_str.lower())
+        weights = [ 1.0 - 0.1 * i/len(chars) for i in range(len(chars))]
+        return {c: sum(w for char, w in zip(chars, weights) if char == c) for c in set(chars)}
     
-    
-    chars1 = list(typer_str.lower())
-    chars2 = list(target_str.lower())]
+    freq1 = weighted_chars(typer_str)
+    freq2 = weighted_chars(target_str)
  
+    all_chars = set(freq1) | set(freq2)
+
+    total_w1 = sum(freq1.values())
+    total_w2 = sum(freq2.values())
     
-    all_chars = sorted(set(chars1 + chars2))
-    n1, n2 = len(chars1), len(chars2)
-    
-    vec1 = [chars1.count(c) / n1 if n1 > 0 else 0 for c in all_chars]
-    vec2 = [chars2.count(c) / n2 if n2 > 0 else 0 for c in all_chars]
+    vec1 = [freq1.count(c, 0) / total_w1 if total_w1 > 0 else 0 for c in all_chars]
+    vec2 = [freq2.count(c, 0) / total_w2 if total_w2 > 0 else 0 for c in all_chars]
     
     diff_sum_sq = sum((v2 - v1)**2 for v1, v2 in zip(vec1, vec2))
     return math.sqrt(diff_sum_sq)
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
-        employees = ["synterly", "aubsec", "scavengeremain"]
+        employees = ["synterly", "aubsec", "scavengeremain", "smarticles101", "bank", "torypixels"]
         query = urllib.parse.urlparse(self.path).query
         params = urllib.parse.parse_qs(query)
         
