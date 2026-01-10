@@ -1,7 +1,7 @@
 from http.server import BaseHTTPRequestHandler
 import urllib.parse
 import math
-
+ 
 def superweapon_power(typer_str, target_str):
     chars1 = list(typer_str.lower())
     chars2 = list(target_str.lower())
