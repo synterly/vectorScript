@@ -1,17 +1,20 @@
 from http.server import BaseHTTPRequestHandler
 import urllib.parse
-import numpy as np
+import math
 
 def superweapon_power(typer_str, target_str):
     chars1 = list(typer_str.lower())
     chars2 = list(target_str.lower())
     
     all_chars = sorted(set(chars1 + chars2))
-    vec1 = np.array([chars1.count(c) / len(chars1) if len(chars1) > 0 else 0 for c in all_chars])
-    vec2 = np.array([chars2.count(c) / len(chars2) if len(chars2) > 0 else 0 for c in all_chars])
+    n1, n2 = len(chars1), len(chars2)
     
-    resultant = vec2 - vec1
-    return np.linalg.norm(resultant)
+    vec1 = [chars1.count(c) / n1 if n1 > 0 else 0 for c in all_chars]
+    vec2 = [chars2.count(c) / n2 if n2 > 0 else 0 for c in all_chars]
+    
+    # Manual norm: sqrt(sum((v2-v1)^2))
+    diff_sum_sq = sum((v2 - v1)**2 for v1, v2 in zip(vec1, vec2))
+    return math.sqrt(diff_sum_sq)
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
