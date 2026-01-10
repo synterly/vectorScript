@@ -1,11 +1,10 @@
 from http.server import BaseHTTPRequestHandler
 import urllib.parse
 import math
- 
+
 def superweapon_power(typer_str, target_str):
     chars1 = list(typer_str.lower())
     chars2 = list(target_str.lower())
-    
     all_chars = sorted(set(chars1 + chars2))
     n1, n2 = len(chars1), len(chars2)
     
@@ -24,27 +23,14 @@ class handler(BaseHTTPRequestHandler):
         target_username = params.get('target', [''])[0]
         
         if not typer_username or not target_username:
-            self.send_response(400)
-            self.send_header("Content-type", "text/plain")
-            self.send_header("Access-Control-Allow-Origin", "*")
-            self.end_headers()
-            self.wfile.write("it missed (invalid username)".encode())
-            return
-        
-        try:
+            response = "it missed (invalid username)"
+        else:
             power = superweapon_power(typer_username, target_username)
             response = f"{typer_username} -> {target_username}: {power:.3f}"
-            
-            self.send_response(200)
-            self.send_header("Content-type", "text/plain")
-            self.send_header("Access-Control-Allow-Origin", "*")
-            self.end_headers()
-            self.wfile.write(response.encode())
-            
-        except Exception as e:
-            self.send_response(500)
-            self.send_header("Content-type", "text/plain")
-            self.send_header("Access-Control-Allow-Origin", "*")
-            self.end_headers()
-            self.wfile.write("it missed (invalid username)".encode())
+        
+        self.send_response(200)
+        self.send_header("Content-type", "text/plain")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.end_headers()
+        self.wfile.write(response.encode())
 
