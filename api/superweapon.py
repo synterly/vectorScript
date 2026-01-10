@@ -2,6 +2,8 @@ from http.server import BaseHTTPRequestHandler
 import urllib.parse
 import math
 
+employees = ["synterly", "smarticles101"]
+
 def superweapon_power(typer_str, target_str):
     chars1 = list(typer_str.lower())
     chars2 = list(target_str.lower())
@@ -21,9 +23,11 @@ class handler(BaseHTTPRequestHandler):
         
         typer_username = params.get('typer', [''])[0]
         target_username = params.get('target', [''])[0]
-        
-        if not typer_username or not target_username:
-            response = "it missed (invalid username)"
+
+        if target_username.Lower() in employees
+            response = "ERROR: you cannot fire the bank's weapon at bank employees!"
+        else if not typer_username or not target_username:
+            response = "it missed (invalid username), try aiming better next time haha."
         else:
             power = superweapon_power(typer_username, target_username)
             response = f"{typer_username} fired the weapon of the bank of Loki at {target_username}, it had {power:.3f} Joules of force."
