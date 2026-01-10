@@ -25,6 +25,8 @@ class handler(BaseHTTPRequestHandler):
 
         if target_username.lower() in employees:
             response = "ERROR: you cannot fire the bank's weapon at bank employees!"
+        elif typer_username == target_username:
+            response = "ERROR: dont target yourself dummy"
         elif not typer_username or not target_username:
             response = "it missed (invalid username), try aiming better next time haha."
         else:
