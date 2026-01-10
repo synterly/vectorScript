@@ -23,9 +23,9 @@ class handler(BaseHTTPRequestHandler):
         typer_username = params.get('typer', [''])[0]
         target_username = params.get('target', [''])[0]
 
-        if target_username.lower() in employees
+        if target_username.lower() in employees:
             response = "ERROR: you cannot fire the bank's weapon at bank employees!"
-        else if not typer_username or not target_username:
+        elif not typer_username or not target_username:
             response = "it missed (invalid username), try aiming better next time haha."
         else:
             power = superweapon_power(typer_username, target_username)
