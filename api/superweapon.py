@@ -16,8 +16,8 @@ def superweapon_power(typer_str, target_str):
     total_w1 = sum(freq1.values())
     total_w2 = sum(freq2.values())
     
-    vec1 = [freq1.count(c, 0) / total_w1 if total_w1 > 0 else 0 for c in all_chars]
-    vec2 = [freq2.count(c, 0) / total_w2 if total_w2 > 0 else 0 for c in all_chars]
+    vec1 = [freq1.get(c, 0) / total_w1 if total_w1 > 0 else 0 for c in all_chars]
+    vec2 = [freq2.get(c, 0) / total_w2 if total_w2 > 0 else 0 for c in all_chars]
     
     diff_sum_sq = sum((v2 - v1)**2 for v1, v2 in zip(vec1, vec2))
     return math.sqrt(diff_sum_sq)
