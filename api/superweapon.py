@@ -3,8 +3,13 @@ import urllib.parse
 import math
 
 def superweapon_power(typer_str, target_str):
+
+    
+    
     chars1 = list(typer_str.lower())
-    chars2 = list(target_str.lower())
+    chars2 = list(target_str.lower())]
+ 
+    
     all_chars = sorted(set(chars1 + chars2))
     n1, n2 = len(chars1), len(chars2)
     
@@ -16,7 +21,7 @@ def superweapon_power(typer_str, target_str):
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
-        employees = ["synterly", "smarticles101", "aubsec", "scavengeremain"]
+        employees = ["synterly", "aubsec", "scavengeremain"]
         query = urllib.parse.urlparse(self.path).query
         params = urllib.parse.parse_qs(query)
         
