@@ -43,7 +43,7 @@ class handler(BaseHTTPRequestHandler):
             response = "it missed (invalid username), try aiming better next time haha."
         else:
             power = superweapon_power(typer_username, target_username)
-            response = f"{typer_username} fired the weapon of the bank of Loki at {target_username}, it had {power:.3f} Newtons of force."
+            response = f"{typer_username} fired the weapon of the bank at {target_username}, it had {power:.3f} Newtons of force."
         
         self.send_response(200)
         self.send_header("Content-type", "text/plain")
