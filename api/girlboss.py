@@ -20,11 +20,11 @@ class handler(BaseHTTPRequestHandler):
         else:
             target_power = girlboss_power()
             if target_power > typer_power:
-                response = f"uh oh! {typer_username}, you got outgirlbossed, with {typer_power:.0f} vs {target_power:.0f}"
+                response = f"uh oh! {typer_username}, you got outgirlbossed"
             elif target_power < typer_power:
-                response = f"{typer_username} totally out girlbossed {target_username} with {typer_power:.1f} vs {target_power:.1f}"
+                response = f"{typer_username}, totally out girlbossed {target_username}"
             elif target_power == typer_power:
-                response = f"{typer_username} and {target_username} tied, with {typer_power:.0f}, they should girlboss together and not against eachother"
+                response = f"{typer_username} and {target_username} tied, with {typer_power:.0f}% potential to girlboss, they should girlboss together and not against eachother, there is a 2^-53 chance of this code executing, this occurence is less likely than exactly perfectly guessing the order of all the cards in a deck of cards."
         
         self.send_response(200)
         self.send_header("Content-type", "text/plain")
