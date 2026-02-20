@@ -17,17 +17,19 @@ class handler(BaseHTTPRequestHandler):
         typer_username = params.get('typer', [''])[0]
         target_username = params.get('target', [''])[0]
 
-        typer_power = girlboss_power(typer_username)
+        typer_power = gaslighting_ability(typer_username)
         if target_username.lower() == typer_username.lower():
-            response = f"{typer_username} is totally girlbossing out right now, wowza! {typer_power:.0f} girlboss potential!"
+            response = f"{typer_username} tried to gaslight... themselves? I'm not sure..."
         else:
-            target_power = girlboss_power(target_username)
+            target_power = gaslighting_ability(target_username)
+            certainty = ( target_power / typer_power ) * 100
             if target_power > typer_power:
-                response = f"uh oh! {typer_username}, you got outgirlbossed by {target_username}"
+                response = f"{typer_username} failed to gaslight {target_username}, {certainty}%"
             elif target_power < typer_power:
-                response = f"{typer_username}, totally out girlbossed {target_username}"
+                response = f"{typer_username}, totally out girlbossed {target_username}, {certainty}%"
             elif target_power == typer_power:
-                response = f"{typer_username} and {target_username} tied, with {typer_power:.0f}% potential to girlboss, they should girlboss together and not against eachother, there is a 2^-53 chance of this code executing, this occurence is less likely than exactly perfectly guessing the order of all the cards in a deck of cards."
+                response = f"{typer_username} and {target_username} tied, with {typer_power}% gaslighting ability, they are equally dumb dumb and tricked eachother."
+                
         self.send_response(200)
         self.send_header("Content-type", "text/plain")
         self.send_header("Access-Control-Allow-Origin", "*")
