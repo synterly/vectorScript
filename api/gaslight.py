@@ -26,7 +26,7 @@ class handler(BaseHTTPRequestHandler):
             if target_power > typer_power:
                 response = f"{typer_username} failed to gaslight {target_username}, {certainty:.1f}%"
             elif target_power < typer_power:
-                response = f"{typer_username}, totally out girlbossed {target_username}, {certainty:.1f}%"
+                response = f"{typer_username}, gaslit {target_username}, {certainty:.1f}%"
             elif target_power == typer_power:
                 response = f"{typer_username} and {target_username} tied, with {typer_power:.1f}% gaslighting ability, they are equally dumb dumb and tricked eachother."
                 
