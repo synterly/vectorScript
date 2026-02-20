@@ -14,17 +14,17 @@ class handler(BaseHTTPRequestHandler):
         placement = gatekeep_skill / 10000 * 100
 
         if gatekeep_skill >= 9900:
-          response = f"yeah yeah keep gatekeeping, you might aswell gatekeep everything, youre on some kinda leaderboard for gatekeeping for sure, youre better than {placement}% of gatekeepers"
+          response = f"yeah yeah keep gatekeeping, you might aswell gatekeep everything, youre on some kinda leaderboard for gatekeeping for sure, youre better than {placement:.2f}% of gatekeepers"
         elif gatekeep_skill >= 6500:
-          response = f"of course you'd be gatekeeping, youre better than {placement}% of gatekeepers"
+          response = f"of course you'd be gatekeeping, youre better than {placement:.2f}% of gatekeepers"
         elif gatekeep_skill >= 3000:
-          response = f"keep it up, one day you might be able to gatekeep more, youre better than {placement}% of gatekeepers"
+          response = f"keep it up, one day you might be able to gatekeep more, youre better than {placement:.2f}% of gatekeepers"
         elif gatekeep_skill >= 1000:
-          response = f"why... how could you do this.. I thought you were a good person who didnt gatekeep, youre better than {placement}% of gatekeepers"
+          response = f"why... how could you do this.. I thought you were a good person who didnt gatekeep, youre better than {placement:.2f}% of gatekeepers"
         elif gatekeep_skill >= 100:
-          response = f"you cant gatekeep anything, youre in the bottom {placement}% of gatekeepers"
+          response = f"you cant gatekeep anything, youre in the bottom {placement:.2f}% of gatekeepers"
         elif gatekeep_skill <  100:
-          response = f"HAHA, YOU REALLY THOUGHT YOU COULD GATEKEEP ANYTHING, YOU ROLLED BELOW 100 OUT OF 10000, IM CRYING, youre in the bottom {placement}% of gatekeepers"
+          response = f"HAHA, YOU REALLY THOUGHT YOU COULD GATEKEEP ANYTHING, YOU ROLLED BELOW 100 OUT OF 10000, IM CRYING, youre in the bottom {placement:.2f}% of gatekeepers"
         
 
         self.send_response(200)
