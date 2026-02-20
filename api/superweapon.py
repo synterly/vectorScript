@@ -25,7 +25,7 @@ def superweapon_power(typer_str, target_str):
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
-        employees = ["synterly", "aubsec", "scavengeremain", "smarticles101", "bank", "torypixels"]
+        employees = ["synterly", "aubsec", "scavengeremain", "bank", "torypixels"]
         query = urllib.parse.urlparse(self.path).query
         params = urllib.parse.parse_qs(query)
         
@@ -34,9 +34,9 @@ class handler(BaseHTTPRequestHandler):
 
         if target_username.lower() in employees:
             response = "ERROR: you cannot fire the bank's weapon at bank employees!"
-        elif typer_username.lower() in employees:
+        elif typer_username.lower() in employees or target_username.lower() == "smarticles101":
             power = superweapon_power(typer_username, target_username) * 10
-            response = f"{typer_username} fired the weapon of the bank of Loki at {target_username}, it had {power:.3f} Newtons of force."    
+            response = f"{typer_username} fired the weapon of the bank at {target_username}, it had {power:.3f} Newtons of force."    
         elif typer_username == target_username:
             response = "ERROR: dont target yourself dummy"
         elif not typer_username or not target_username:
