@@ -24,11 +24,11 @@ class handler(BaseHTTPRequestHandler):
             target_power = gaslighting_ability(target_username)
             certainty = ( target_power / typer_power ) * 100
             if target_power > typer_power:
-                response = f"{typer_username} failed to gaslight {target_username}, {certainty}%"
+                response = f"{typer_username} failed to gaslight {target_username}, {certainty:.1f}%"
             elif target_power < typer_power:
-                response = f"{typer_username}, totally out girlbossed {target_username}, {certainty}%"
+                response = f"{typer_username}, totally out girlbossed {target_username}, {certainty:.1f}%"
             elif target_power == typer_power:
-                response = f"{typer_username} and {target_username} tied, with {typer_power}% gaslighting ability, they are equally dumb dumb and tricked eachother."
+                response = f"{typer_username} and {target_username} tied, with {typer_power:.1f}% gaslighting ability, they are equally dumb dumb and tricked eachother."
                 
         self.send_response(200)
         self.send_header("Content-type", "text/plain")
