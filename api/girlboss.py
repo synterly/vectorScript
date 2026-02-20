@@ -20,7 +20,7 @@ class handler(BaseHTTPRequestHandler):
         else:
             target_power = girlboss_power()
             if target_power > typer_power:
-                response = f"uh oh! {typer_username}, you got outgirlbossed"
+                response = f"uh oh! {typer_username}, you got outgirlbossed by {target_username}"
             elif target_power < typer_power:
                 response = f"{typer_username}, totally out girlbossed {target_username}"
             elif target_power == typer_power:
