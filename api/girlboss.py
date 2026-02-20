@@ -15,7 +15,7 @@ class handler(BaseHTTPRequestHandler):
         target_username = params.get('target', [''])[0]
 
         typer_power = girlboss_power()
-        if target_username == "":
+        if target_username.lower() == typer_username.lower():
             response = f"{typer_username} is totally girlbossing out right now, wowza! {typer_power:.0f} girlboss potential!"
         else:
             target_power = girlboss_power()
