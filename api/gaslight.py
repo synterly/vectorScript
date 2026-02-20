@@ -22,11 +22,11 @@ class handler(BaseHTTPRequestHandler):
             response = f"{typer_username} tried to gaslight... themselves? I'm not sure..."
         else:
             target_power = gaslighting_ability(target_username)
-            certainty = ( target_power / typer_power ) * 100
+            certainty = ( typer_power / target_power ) * 100
             if target_power > typer_power:
-                response = f"{typer_username} failed to gaslight {target_username}, {certainty:.1f}%"
+                response = f"{typer_username} failed to gaslight {target_username}, they are {certainty:.1f}% convinced"
             elif target_power < typer_power:
-                response = f"{typer_username}, gaslit {target_username}, {certainty:.1f}%"
+                response = f"{typer_username}, gaslit {target_username}, they are {certainty:.1f}% convinced"
             elif target_power == typer_power:
                 response = f"{typer_username} and {target_username} tied, with {typer_power:.1f}% gaslighting ability, they are equally dumb dumb and tricked eachother."
                 
