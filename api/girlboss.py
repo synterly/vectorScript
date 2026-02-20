@@ -3,8 +3,11 @@ import urllib.parse
 import math
 import random
 
-def girlboss_power():
-    return random.random() * 1000
+def girlboss_power(name):
+    if name == "synterly":
+        return 900
+    else:
+        return random.random() * 1000
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -14,11 +17,11 @@ class handler(BaseHTTPRequestHandler):
         typer_username = params.get('typer', [''])[0]
         target_username = params.get('target', [''])[0]
 
-        typer_power = girlboss_power()
+        typer_power = girlboss_power(typer_username)
         if target_username.lower() == typer_username.lower():
             response = f"{typer_username} is totally girlbossing out right now, wowza! {typer_power:.0f} girlboss potential!"
         else:
-            target_power = girlboss_power()
+            target_power = girlboss_power(target_username)
             if target_power > typer_power:
                 response = f"uh oh! {typer_username}, you got outgirlbossed by {target_username}"
             elif target_power < typer_power:
