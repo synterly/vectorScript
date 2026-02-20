@@ -4,7 +4,7 @@ import math
 import random
 
 def girlboss_power(name):
-    if name == "synterly":
+    if name.lower() == "synterly":
         return 900
     else:
         return random.random() * 1000
