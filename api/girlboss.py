@@ -5,7 +5,9 @@ import random
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
-
+        query = urllib.parse.urlparse(self.path).query
+        params = urllib.parse.parse_qs(query)
+        
         response = " wow youre girlbossing so hard!"
         
         self.send_response(200)
