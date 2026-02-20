@@ -4,7 +4,7 @@ import math
 import random
 
 def girlboss_power():
-    return randomn.random()
+    return random.random()
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
