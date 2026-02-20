@@ -3,12 +3,28 @@ import urllib.parse
 import math
 import random
 
+def girlboss_power():
+    return randomn.random()
+
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
         query = urllib.parse.urlparse(self.path).query
         params = urllib.parse.parse_qs(query)
         
-        response = "wow youre girlbossing so hard!"
+        typer_username = params.get('typer', [''])[0]
+        target_username = params.get('target', [''])[0]
+
+        typer_power = girlboss_power()
+        if not target_username:
+            response = f"{typer_username} is totally girlbossing out right now, wowza! {typer_power} girlboss potential!"
+        target_power = girlboss_power()
+        
+        if target_power > typer_power:
+            response = f"uh oh! {typer_username}, you got outgirlbossed, with {typer_power} vs {target_power}"
+        elif target_power < typer_power:
+            response = f"{typer_username} totally out girlbossed {target_username} with {typer_power} vs {target_power}"
+        elif target_power == typer_power:
+            response = f"{typer_username} and {target_username} tied, with {typer_power}, they should girlboss together and not against eachother"
         
         self.send_response(200)
         self.send_header("Content-type", "text/plain")
