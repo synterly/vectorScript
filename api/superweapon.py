@@ -35,7 +35,7 @@ class handler(BaseHTTPRequestHandler):
         if target_username.lower() in employees:
             response = "ERROR: you cannot fire the bank's weapon at bank employees!"
         elif target_username.lower() == "smarticles101":
-            power = superweapon_power(typer_username, target_username) * 1000
+            power = superweapon_power(typer_username, target_username) * 100000
             response = f"{typer_username} fired the weapon of the bank at {target_username}, it had {power:.3f} Newtons of force."
         elif typer_username.lower() in employees:
             power = superweapon_power(typer_username, target_username) * 10
