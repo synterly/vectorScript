@@ -8,7 +8,7 @@ class handler(BaseHTTPRequestHandler):
         query = urllib.parse.urlparse(self.path).query
         params = urllib.parse.parse_qs(query)
         
-        response = " wow youre girlbossing so hard!"
+        response = "wow youre girlbossing so hard!"
         
         self.send_response(200)
         self.send_header("Content-type", "text/plain")
