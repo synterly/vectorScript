@@ -34,9 +34,12 @@ class handler(BaseHTTPRequestHandler):
 
         if target_username.lower() in employees:
             response = "ERROR: you cannot fire the bank's weapon at bank employees!"
-        elif typer_username.lower() in employees or target_username.lower() == "smarticles101":
+        elif target_username.lower() == "smarticles101":
+            power = superweapon_power(typer_username, target_username) * 1000
+            response = f"{typer_username} fired the weapon of the bank at {target_username}, it had {power:.3f} Newtons of force."
+        elif typer_username.lower() in employees:
             power = superweapon_power(typer_username, target_username) * 10
-            response = f"{typer_username} fired the weapon of the bank at {target_username}, it had {power:.3f} Newtons of force."    
+            response = f"{typer_username} fired the weapon of the bank at {target_username}, it had {power:.3f} Newtons of force."
         elif typer_username == target_username:
             response = "ERROR: dont target yourself dummy"
         elif not typer_username or not target_username:
