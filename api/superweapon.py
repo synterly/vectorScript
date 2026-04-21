@@ -47,7 +47,9 @@ class handler(BaseHTTPRequestHandler):
         else:
             power = superweapon_power(typer_username, target_username)
             response = f"{typer_username} fired the weapon of the bank at {target_username}, it had {power:.3f} Newtons of force."
-        
+
+
+        response = "the bank's superweapon is malfunctioning, seems to need maintenance."
         self.send_response(200)
         self.send_header("Content-type", "text/plain")
         self.send_header("Access-Control-Allow-Origin", "*")
