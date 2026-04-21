@@ -34,7 +34,7 @@ class handler(BaseHTTPRequestHandler):
         
 
 
-        response = "the bank's superweapon is malfunctioning, it needs maintenance, the bank is planning something big."
+        response = "the bank's superweapon is malfunctioning, it needs maintenance, the bank is planning something big"
         self.send_response(200)
         self.send_header("Content-type", "text/plain")
         self.send_header("Access-Control-Allow-Origin", "*")
