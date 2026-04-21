@@ -31,22 +31,7 @@ class handler(BaseHTTPRequestHandler):
         
         typer_username = params.get('typer', [''])[0]
         target_username = params.get('target', [''])[0]
-
-        if target_username.lower() in employees:
-            response = "ERROR: you cannot fire the bank's weapon at bank employees!"
-        elif target_username.lower() == "smarticles101":
-            power = superweapon_power(typer_username, target_username) * 100000
-            response = f"{typer_username} fired the weapon of the bank at {target_username}, it had {power:.3f} Newtons of force."
-        elif typer_username.lower() in employees:
-            power = superweapon_power(typer_username, target_username) * 10
-            response = f"{typer_username} fired the weapon of the bank at {target_username}, it had {power:.3f} Newtons of force."
-        elif typer_username == target_username:
-            response = "ERROR: dont target yourself dummy"
-        elif not typer_username or not target_username:
-            response = "it missed (invalid username), try aiming better next time haha."
-        else:
-            power = superweapon_power(typer_username, target_username)
-            response = f"{typer_username} fired the weapon of the bank at {target_username}, it had {power:.3f} Newtons of force."
+        
 
 
         response = "the bank's superweapon is malfunctioning, seems to need maintenance."
